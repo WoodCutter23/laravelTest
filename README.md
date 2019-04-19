@@ -20,7 +20,8 @@ This is test Laravel Project
 
 ## Install
 
-####Step 1
+
+#### Step 1
 
 Find the example.env file -> rename it in .env
 
