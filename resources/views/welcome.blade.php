@@ -1,0 +1,1 @@
+<script src="//unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js"></script>

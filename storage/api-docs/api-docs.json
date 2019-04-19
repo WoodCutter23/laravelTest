@@ -1,0 +1,113 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Laravel TEST App API",
+        "version": "1.0"
+    },
+    "host": "laravel.localhost",
+    "basePath": "",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/api/V1/file": {
+            "post": {
+                "tags": [
+                    "file"
+                ],
+                "summary": "Upload file with organisations",
+                "operationId": "uploadOrgsFile",
+                "parameters": [
+                    {
+                        "name": "file",
+                        "in": "form/data",
+                        "description": "file with orgs",
+                        "required": true,
+                        "type": "binary"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "problem with file"
+                    },
+                    "422": {
+                        "description": "failed validation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/api/V1/schedule": {
+            "get": {
+                "tags": [
+                    "schedule"
+                ],
+                "summary": "Get all organisations schedule",
+                "operationId": "getAllSchedule",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "not found schedule"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/api/V1/schedule/filter": {
+            "get": {
+                "tags": [
+                    "schedule"
+                ],
+                "summary": "Get Oraganisations by interval",
+                "operationId": "getOrgsByInterval",
+                "parameters": [
+                    {
+                        "name": "start",
+                        "in": "body",
+                        "description": "time when org starts work",
+                        "required": true,
+                        "type": "time"
+                    },
+                    {
+                        "name": "end",
+                        "in": "body",
+                        "description": "time when org ends work",
+                        "required": true,
+                        "type": "time"
+                    },
+                    {
+                        "name": "day",
+                        "in": "body",
+                        "description": " number of day from 0 (Sun) to 6 (Sat), if not set, server will autodetect day  of the week ",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "problem with file"
+                    },
+                    "422": {
+                        "description": "failed validation"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

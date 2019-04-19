@@ -1,0 +1,29 @@
+version: "3"
+services:
+  database:
+    image: postgres
+    hostname: localhost
+    container_name: pg_container
+    environment:
+      POSTGRES_PASSWORD: docker
+    ports:
+    - 54328:5432
+  app:
+    build:
+      context: ./
+      dockerfile: docker/laravel/Dockerfile
+    working_dir: /var/www/html
+    container_name: laravel_app
+    depends_on:
+      - database
+    links:
+    - database
+  web:
+    build:
+      context: docker/ngnix
+      dockerfile: Dockerfile
+    working_dir: /var/www/html
+    links:
+    - database
+    ports:
+    - "2018:80"

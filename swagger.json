@@ -1,0 +1,92 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Test Laravel App"
+  },
+  "host": "127.0.0.1",
+  "basePath": "/api/v1",
+  "paths": {
+    "/file": {
+      "post": {
+        "tags": [
+          "File"
+        ],
+        "summary": "Uploads a file.",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "file",
+            "type": "file",
+            "required": true,
+            "description": "The file to upload."
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Failed Parse file"
+          },
+          "422": {
+            "description": "Validation Failed"
+          }
+        }
+      }
+    },
+    "/schedule": {
+      "get": {
+        "tags": [
+          "Schedule"
+        ],
+        "summary": "Shedule of org work",
+        "responses": {
+          "200": {
+            "description": "json with shedule"
+          }
+        }
+      }
+    },
+    "/shedule/filter": {
+      "get": {
+        "tags": [
+          "Schedule"
+        ],
+        "summary": "get schedule in work interval",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "time settings",
+            "description": "time settings to find works organisations",
+            "schema": {
+              "type": "object",
+              "required": [
+                "end"
+              ],
+              "properties": {
+                "end": {
+                  "type": "string",
+                  "description": "time in \"H:m\" ex '20:00'"
+                },
+                "start": {
+                  "type": "string",
+                  "description": "time in \"H:m\" ex  '20:00'"
+                },
+                "day": {
+                  "type": "integer",
+                  "description": "int from 0 (Sunday) to 6 (Saturday), if null THEN server detect day automaticly"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "json with organisations"
+          }
+        }
+      }
+    }
+  }
+}
