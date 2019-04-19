@@ -22,7 +22,7 @@ This is test Laravel Project
 
 ####Step 1
 
-Find the .env.example file -> rename it in .env
+Find the example.env file -> rename it in .env
 
 #### Step 2
 
